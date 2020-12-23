@@ -36,7 +36,7 @@ app.get("/help", (req, res) => {
   res.render("help", { message: "Help me", name: "Demario", title: "Help" });
 });
 
-app.get("*", (req, res) => {
+app.get("/help/k/*", (req, res) => {
   res.render("404", {
     message: "Page not found",
     name: "Demario",
@@ -53,7 +53,11 @@ app.get("/help/*", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
-  res.send({ Forecast: "Rain", location: "Toronto" });
+  if (!req.query.cityName) {
+    res.send({ error: "Please provide a city name." });
+  } else {
+    res.send({ Forecast: "Rain", location: req.query.cityName });
+  }
 });
 
 app.listen(3000, () => {
