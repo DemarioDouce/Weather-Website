@@ -3,6 +3,9 @@ const path = require("path");
 //npm module
 const express = require("express");
 const hbs = require("hbs");
+//custom module
+const weather = require("./utils/weather");
+const { response } = require("express");
 
 //path to dir
 console.log(__dirname);
@@ -56,7 +59,19 @@ app.get("/weather", (req, res) => {
   if (!req.query.cityName) {
     res.send({ error: "Please provide a city name." });
   } else {
-    res.send({ Forecast: "Rain", location: req.query.cityName });
+    weather.getWeather(req.query.cityName, (error, response) => {
+      if (error) {
+        res.send({
+          error: error,
+        });
+      } else {
+        res.send({
+          location: req.query.cityName,
+          Temp: response.temp,
+          Description: response.description,
+        });
+      }
+    });
   }
 });
 
