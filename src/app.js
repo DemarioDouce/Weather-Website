@@ -10,13 +10,14 @@ console.log(__dirname);
 console.log(path.join(__dirname, "../public"));
 
 //paths
+const publicDirectoryPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
 const partialsPath = path.join(__dirname, "../templates/partials");
 
 const app = express();
 
 //static dir to serve
-app.use(express.static(viewsPath));
+app.use(express.static(publicDirectoryPath));
 
 //setup handlebars engine and views location
 app.set("view engine", "hbs");
