@@ -28,31 +28,7 @@ app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
 
 app.get("", (req, res) => {
-  res.render("index", { title: "Weather App", name: "Demario" });
-});
-
-app.get("/about", (req, res) => {
-  res.render("about", { title: "About me", name: "Demario" });
-});
-
-app.get("/help", (req, res) => {
-  res.render("help", { message: "Help me", name: "Demario", title: "Help" });
-});
-
-app.get("/help/k/*", (req, res) => {
-  res.render("404", {
-    message: "Page not found",
-    name: "Demario",
-    title: "404",
-  });
-});
-
-app.get("/help/*", (req, res) => {
-  res.render("404", {
-    message: "Page not found",
-    name: "Demario",
-    title: "404",
-  });
+  res.render("index", { title: "Weather App", name: " Demario Douce" });
 });
 
 app.get("/weather", (req, res) => {
@@ -73,6 +49,14 @@ app.get("/weather", (req, res) => {
       }
     });
   }
+});
+
+app.get("*", (req, res) => {
+  res.render("404", {
+    message: "Page not found",
+    name: "Demario",
+    title: "404",
+  });
 });
 
 app.listen(3000, () => {
