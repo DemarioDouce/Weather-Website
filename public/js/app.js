@@ -17,7 +17,11 @@ weatherForm.addEventListener("submit", (e) => {
         weatherError.textContent = data.error;
         weatherData.textContent = "";
       } else {
-        weatherData.textContent = JSON.stringify(data);
+        weatherData.textContent =
+          "The weather for the city of " +
+          data.location +
+          " is " +
+          data.weatherData;
         weatherError.textContent = "";
       }
     });

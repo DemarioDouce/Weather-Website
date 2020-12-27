@@ -35,7 +35,7 @@ app.get("/weather", (req, res) => {
   if (!req.query.cityName) {
     res.send({ error: "Please provide a city name." });
   } else {
-    weather.getWeather(req.query.cityName, (error, response) => {
+    weather.getWeather(req.query.cityName, (error, weatherData) => {
       if (error) {
         res.send({
           error: error,
@@ -43,8 +43,7 @@ app.get("/weather", (req, res) => {
       } else {
         res.send({
           location: req.query.cityName,
-          Temp: response.temp,
-          Description: response.description,
+          weatherData: weatherData,
         });
       }
     });
