@@ -1,5 +1,5 @@
 # Weather
 ---
 ## Screenshot
-![Mockup image.](/Mockups/MockupHomepage.png)
+![Mockup image.](/Mockups/MockupWeather.png)
 ---
